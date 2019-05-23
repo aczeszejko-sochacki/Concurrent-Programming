@@ -1,5 +1,5 @@
 object Main extends App {
-  def whileLoop(cond: () => Boolean, expr: () => Unit): Unit = 
+  def whileLoop(cond: =>Boolean)(expr: =>Unit): Unit = 
     if (cond()) { expr(); whileLoop(cond, expr) }
     else ()
 
@@ -7,5 +7,5 @@ object Main extends App {
   val cond = () => count < 5
   val expr = () => {println(count); count += 1}
 
-  whileLoop(cond, expr)
+  whileLoop(cond)(expr)
 }

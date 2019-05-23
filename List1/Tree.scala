@@ -20,7 +20,7 @@ object TreeSum extends App {
   }
 
   def inorderBTFold[A](bt: BT[A]): List[A] = {
-    foldBT((elem: A) => (left: List[A], right: List[A]) => left ::: List(elem) ::: right)(Nil)(bt)
+    foldBT((elem: A) => (left: List[A], right: List[A]) => left ::: elem :: right)(Nil)(bt)
   }
 
   def mapBT[A, B](f: A => B)(bt: BT[A]): BT[B] = {

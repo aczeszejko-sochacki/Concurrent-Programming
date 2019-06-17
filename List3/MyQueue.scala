@@ -7,13 +7,15 @@ class MyQueue[T] private (private val xs: List[T], private val ys: List[T]) {
 	def dequeue(): MyQueue[T] = xs match {
 			case Nil => this
 			case List(_) => new MyQueue(ys.reverse, Nil)
-			case head::tail => new MyQueue(tail, ys)
+			case _::tail => new MyQueue(tail, ys)
 	}
 	def first(): T = if (isEmpty()) throw new Exception("First of empty queue") else xs.head
 
 	def isEmpty(): Boolean = xs.isEmpty
 
 	def firstOption(): Option[T] = if (isEmpty()) None else Some(first())
+
+	def this() { this(Nil, Nil) }
 }
 
 object MyQueue {
@@ -32,9 +34,8 @@ case class Node[+A](elem: A, left: BT[A], right: BT[A]) extends BT[A]
 object BFS {
 	def breadthBT[A](tree: BT[A]): List[A] = {
 		def aux(queue: MyQueue[BT[A]]): List[A] = {
-			val front = queue.firstOption()
 
-			front match {
+			queue.firstOption() match {
 				case Some(Node(elem, left, right)) => elem :: aux(queue.dequeue.enqueue(left).enqueue(right))
 				case Some(Empty) => aux(queue.dequeue)
 				case None => Nil
@@ -50,6 +51,7 @@ object Lista3 extends App {
 	// Creating queues
 	MyQueue.empty()
 	MyQueue()
+	new MyQueue
 	var queue = MyQueue(1, 2, 3)
 
 	// Operations on queue

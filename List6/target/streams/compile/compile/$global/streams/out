@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/home/pozdrowiony/Documents/Scala/Concurrent-Programming/List6/src/main/scala/Client.scala:11:15: lazy not allowed here. Only vals can be lazy[0m
+[0m[[0m[31merror[0m] [0m[0m	private lazy var actualApprox: Int = {[0m
+[0m[[0m[31merror[0m] [0m[0m	             ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
